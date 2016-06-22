@@ -3,6 +3,14 @@ python:
   - "2.7"
   - "3.4"
   - "3.5"
-  - "pypy"
 
-script: python setup.py test
+before_install:
+  - wget https://www.math.ucdavis.edu/~latte/software/packages/binary/latte-integrale-1.6-x86_64-unknown-linux-gnu.zip -O /tmp/latte.zip
+  - mkdir latte && pushd latte && unzip /tmp/latte.zip && popd
+  - export LATTE_PATH=$PWD/latte/bin/count
+
+install:
+  - pip install pytest
+  - pip install -e .
+
+script: py.test --latte=$LATTE_PATH
