@@ -28,9 +28,9 @@ class BarvinokEvaluator(EvaluatorBase):
     Evaluate vector partition functions at given point using barvinok (http://barvinok.gforge.inria.fr/).
     """
 
-    def __init__(self, path='barvinok_count'):
+    def __init__(self, path):
         assert os.path.isfile(
-            path), '%s not found (should be path to barvinok_count binary)' % path
+            path), '"%s" not found (should be path to barvinok_count binary)' % path
         self.path = path
 
     def eval(self, vpn, b):

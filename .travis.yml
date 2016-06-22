@@ -13,4 +13,6 @@ install:
   - pip install pytest
   - pip install -e .
 
-script: py.test --latte=$LATTE_PATH
+script:
+  - py.test --latte=$LATTE_PATH
+  - barvikron [20,0] [11,9] [11,9] --latte=$LATTE_PATH

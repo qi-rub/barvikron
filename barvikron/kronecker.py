@@ -63,17 +63,20 @@ def positive_roots(dims):
     return roots
 
 
-def kronecker(omega, evaluator):
+def kronecker(partitions, evaluator):
     """
     Compute Kronecker coefficient for given highest weight.
     """
     # create partition function
-    dims = list(map(len, omega))
+    dims = list(map(len, partitions))
     vpn = kronecker_weight_vpn(dims)
 
     # compute highest weight and finite-difference formula
-    highest_weight = flatten_weight(omega)
-    findiff = finite_differences(positive_roots(dims))
+    highest_weight = flatten_weight(partitions)
+    proots = positive_roots(dims)
+    assert all(highest_weight.dot(pr) >= 0
+               for pr in proots), 'Highest weight should be dominant.'
+    findiff = finite_differences(proots)
 
     logging.info(
         'About to compute %d weight multiplicities using a partition function of size %s.',

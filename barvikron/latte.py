@@ -29,9 +29,9 @@ class LatteEvaluator(EvaluatorBase):
     Evaluate vector partition functions at given point using LattE's count tool (https://www.math.ucdavis.edu/~latte/).
     """
 
-    def __init__(self, path='count'):
+    def __init__(self, path):
         assert os.path.isfile(
-            path), '%s not found (should be path to LattE\'s count binary)' % path
+            path), '"%s" not found (should be path to LattE\'s count binary)' % path
         self.path = path
 
     def eval(self, vpn, b):

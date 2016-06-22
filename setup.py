@@ -36,6 +36,10 @@ setup(
         'Development Status :: 4 - Beta',
         'Environment :: Console',
     ],
-    install_requires=['Click'],
+    install_requires=['Click', 'numpy'],
     packages=['barvikron'],
-    tests_require=['pytest'])
+    tests_require=['pytest'],
+    entry_points='''
+    [console_scripts]
+    barvikron=barvikron.__main__:cli
+    ''')
