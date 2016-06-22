@@ -1,5 +1,5 @@
 from __future__ import division
-from barvikron import VectorPartitionFunction
+from barvikron import *
 import itertools
 import pytest
 

@@ -13,7 +13,7 @@ class VectorPartitionFunction(object):
     """
 
     def __init__(self, A):
-        self.A = np.array(A).astype(int, casting='safe')
+        self.A = np.array(A)
 
     def __repr__(self):
         return '<VectorPartitionFunction(%s)>' % self.A

@@ -1,6 +1,6 @@
 from __future__ import absolute_import
 import os, subprocess
-from . import EvaluatorBase
+from . import LONG_INTEGER, EvaluatorBase
 
 __all__ = ['BarvinokEvaluator']
 
@@ -46,4 +46,4 @@ class BarvinokEvaluator(EvaluatorBase):
         assert popen.returncode == 0
 
         # parse output
-        return int(stdout.splitlines()[-1])
+        return LONG_INTEGER(stdout.splitlines()[-1])
