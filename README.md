@@ -1,4 +1,4 @@
-# barvikron [![Build Status](https://travis-ci.org/catch22/barvikron.svg?branch=master)](https://travis-ci.org/catch22/barvikron)
+# barvikron [![Build Status](https://travis-ci.org/catch22/barvikron.svg?branch=master)](https://travis-ci.org/catch22/barvikron) [![arXiv](http://img.shields.io/badge/arXiv-1204.4379-blue.svg?style=flat)](http://arxiv.org/abs/1204.4379)
 
 **Efficiently compute Kronecker coefficients of bounded height**
 
