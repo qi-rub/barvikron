@@ -41,5 +41,7 @@ setup(
     tests_require=['pytest'],
     entry_points='''
     [console_scripts]
-    barvikron=barvikron.__main__:cli
+    barvikron=barvikron.scripts.serial:main
+    barvikron-master=barvikron.scripts.parallel:master
+    barvikron-worker=barvikron.scripts.parallel:worker
     ''')

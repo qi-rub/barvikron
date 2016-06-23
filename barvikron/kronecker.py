@@ -32,8 +32,8 @@ def flatten_weight(omega):
     """
     Flatten a product weight omega, given as list of weights of each GL(d), into a single vector.
     """
-    num_boxes = map(sum, omega)
-    assert len(set(num_boxes)) == 1, \
+    num_boxes = set(map(sum, omega))
+    assert len(num_boxes) == 1, \
             'All components should have the same number of degree (number of boxes).'
 
     return np.hstack(omega)
@@ -78,21 +78,22 @@ def kronecker(partitions, evaluator):
                for pr in proots), 'Highest weight should be dominant.'
     findiff = finite_differences(proots)
 
+    # compute finite-difference formula coefficients
+    total = len(findiff)
     logging.info(
         'About to compute %d weight multiplicities using a partition function of size %s.',
-        len(findiff), vpn.A.shape)
+        total, vpn.A.shape)
 
-    # compute finite-difference formula coefficients
     g = LONG_INTEGER(0)
     for i, (coeff, shift) in enumerate(findiff):
         # compute next weight multiplicity
         weight = highest_weight + shift
         logging.info(
             '(%3d/%3d)   About to compute the weight multiplicity of %s...',
-            i + 1, len(findiff), weight)
+            i + 1, total, weight)
         weight_mul = vpn.eval(weight, evaluator)
         logging.info('(%3d/%3d)   => weight multiplicity = %d (coeff = %d).',
-                     i + 1, len(findiff), weight_mul, coeff)
+                     i + 1, total, weight_mul, coeff)
 
         # and add appropriately
         g += coeff * weight_mul

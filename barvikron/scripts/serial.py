@@ -1,17 +1,8 @@
 from __future__ import absolute_import, print_function
+import multiprocessing, multiprocessing.managers
 import click
-import logging
-from . import BarvinokEvaluator, LatteEvaluator, kronecker_weight_multiplicity, kronecker
-
-
-class WeightParamType(click.ParamType):
-    name = 'weight'
-
-    def convert(self, value, param, ctx):
-        value = eval(value)
-        if not isinstance(value, (tuple, list)):
-            self.fail('%s is not a valid weight' % value, param, ctx)
-        return value
+from .. import BarvinokEvaluator, LatteEvaluator, kronecker_weight_multiplicity, kronecker
+from . import WeightParamType, enable_logging
 
 
 @click.command()
@@ -34,11 +25,13 @@ class WeightParamType(click.ParamType):
     is_flag=True,
     help='Compute weight multiplicity instead of Kronecker coefficient.')
 @click.option('-v', '--verbose', is_flag=True)
-def cli(partitions, weight_multiplicity, barvinok, latte, verbose):
+def main(partitions, weight_multiplicity, barvinok, latte, verbose):
+    """
+    Compute (generalized) Kronecker coefficient g(\u03BB,\u03BC,\u03BD,...).
+    """
     # enable verbose mode?
     if verbose:
-        logging.basicConfig(format='%(asctime)-25s %(message)s',
-                            level=logging.INFO)
+        enable_logging()
 
     # instantiate evaluator
     assert bool(barvinok) != bool(
