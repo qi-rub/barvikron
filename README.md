@@ -20,7 +20,7 @@ If you find barvikron useful in your research please consider citing our paper:
 # Installation
 
 To install `barvikron`, simply run:
-```
+```bash
 pip install git+git://github.com/catch22/barvikron.git
 ```
 Then install either [barvinok](http://barvinok.gforge.inria.fr/) or [LattE](https://www.math.ucdavis.edu/~latte/).
@@ -28,10 +28,18 @@ Then install either [barvinok](http://barvinok.gforge.inria.fr/) or [LattE](http
 # Getting started
 
 To compute a single Kronecker coefficient, call `barvikron` with the partitions and specify either the barvinok or LattE backend:
-
-```
+```bash
 $ barvikron [4096,4096] [4096,4096] [4096,4096] --barvinok /opt/barvinok/bin/barvinok_count 
 1
+```
+
+`barvikron` can also be used as a Python library:
+```python
+import barvikron
+
+e = barvikron.BarvinokEvaluator('/opt/barvinok/bin/barvinok_count')
+g = barvikron.kronecker([[3,1], [3,1], [2,2]], e)
+print(g)  # prints 1
 ```
 
 # Usage
