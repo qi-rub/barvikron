@@ -27,8 +27,11 @@ Then install either [barvinok](http://barvinok.gforge.inria.fr/) or [LattE](http
 
 # Getting started
 
+To compute a single Kronecker coefficient, call `barvikron` with the partitions and specify either the barvinok or LattE backend:
+
 ```
-XXX
+$ barvikron [4096,4096] [4096,4096] [4096,4096] --barvinok /opt/barvinok/bin/barvinok_count 
+1
 ```
 
 # Usage
