@@ -1,7 +1,7 @@
 from __future__ import absolute_import
 import os, re, subprocess, tempfile
 from six.moves import map, range
-from . import LONG_INTEGER, EvaluatorBase
+from . import EvaluatorBase
 
 __all__ = ['LatteEvaluator']
 
@@ -56,6 +56,6 @@ class LatteEvaluator(EvaluatorBase):
                               stdout)
             if not match:
                 raise Exception('Could not parse LattE output: %s' % stdout)
-            return LONG_INTEGER(match.group(1))
+            return int(match.group(1))
         finally:
             os.remove(input_path)

@@ -1,7 +1,7 @@
 from __future__ import absolute_import
 import itertools, logging
 import numpy as np
-from . import VectorPartitionFunction, finite_differences, LONG_INTEGER
+from . import VectorPartitionFunction, finite_differences
 
 __all__ = ['kronecker_weight_vpn', 'flatten_weight',
            'kronecker_weight_multiplicity', 'positive_roots', 'kronecker']
@@ -84,7 +84,7 @@ def kronecker(partitions, evaluator):
         'About to compute %d weight multiplicities using a partition function of size %s.',
         total, vpn.A.shape)
 
-    g = LONG_INTEGER(0)
+    g = 0
     for i, (coeff, shift) in enumerate(findiff):
         # compute next weight multiplicity
         weight = highest_weight + shift

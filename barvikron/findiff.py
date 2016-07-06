@@ -1,7 +1,6 @@
 from __future__ import absolute_import
 from collections import defaultdict
 import numpy as np
-from . import LONG_INTEGER
 
 __all__ = ['finite_differences']
 
@@ -19,7 +18,7 @@ def finite_differences(positive_roots):
         l += [(-x[0], x[1] + root) for x in l]
 
     # optimize
-    d = defaultdict(LONG_INTEGER)
+    d = defaultdict(int)
     for coeff, shift in l:
         d[tuple(shift)] += coeff
 

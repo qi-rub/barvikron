@@ -1,7 +1,7 @@
 from __future__ import absolute_import
 import os, subprocess
 from six.moves import map, range
-from . import LONG_INTEGER, EvaluatorBase
+from . import EvaluatorBase
 
 __all__ = ['BarvinokEvaluator']
 
@@ -47,4 +47,4 @@ class BarvinokEvaluator(EvaluatorBase):
         assert popen.returncode == 0
 
         # parse output
-        return LONG_INTEGER(stdout.splitlines()[-1])
+        return int(stdout.splitlines()[-1])

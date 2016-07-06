@@ -3,7 +3,7 @@ import logging, multiprocessing, multiprocessing.managers, os, sys
 from six.moves.queue import Empty
 from six.moves import map
 import click
-from .. import BarvinokEvaluator, LatteEvaluator, kronecker_weight_multiplicity, kronecker, LONG_INTEGER, flatten_weight, finite_differences, positive_roots, kronecker_weight_vpn
+from .. import BarvinokEvaluator, LatteEvaluator, kronecker_weight_multiplicity, kronecker, flatten_weight, finite_differences, positive_roots, kronecker_weight_vpn
 from . import WeightParamType, enable_logging
 
 
@@ -63,7 +63,7 @@ def master(partitions, port, authkey, verbose):
 
     # accumulate weight multiplicities
     logging.info('All work items have been processed. Now accumulating...')
-    g = LONG_INTEGER(0)
+    g = 0
     for _ in findiff:
         g += result_queue.get()
     click.echo(g)
