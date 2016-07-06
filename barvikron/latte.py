@@ -52,7 +52,7 @@ class LatteEvaluator(EvaluatorBase):
             stdout = stdout.decode('ascii')
             if 'Empty polytope or unbounded polytope' in stdout:
                 return 0
-            match = re.search('number of lattice points(?: is)?(?::)? (\d+)',
+            match = re.search(r'number of lattice points(?: is)?(?::)? (\d+)',
                               stdout)
             if not match:
                 raise Exception('Could not parse LattE output: %s' % stdout)

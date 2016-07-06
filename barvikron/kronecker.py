@@ -54,8 +54,8 @@ def positive_roots(dims):
     """
     roots = []
     for k, dim in enumerate(dims):
-        for i in range(dims[k]):
-            for j in range(i + 1, dims[k]):
+        for i in range(dim):
+            for j in range(i + 1, dim):
                 root = np.zeros(sum(dims), dtype=object)
                 root[sum(dims[:k]) + i] = 1
                 root[sum(dims[:k]) + j] = -1

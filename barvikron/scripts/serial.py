@@ -1,5 +1,4 @@
 from __future__ import absolute_import, print_function
-import multiprocessing, multiprocessing.managers
 import click
 from .. import BarvinokEvaluator, LatteEvaluator, kronecker_weight_multiplicity, kronecker
 from . import WeightParamType, enable_logging

@@ -1,9 +1,9 @@
 from __future__ import absolute_import, print_function
-import logging, multiprocessing, multiprocessing.managers, os, sys
+import logging, multiprocessing, multiprocessing.managers, os
 from six.moves.queue import Empty
 from six.moves import map
 import click
-from .. import BarvinokEvaluator, LatteEvaluator, kronecker_weight_multiplicity, kronecker, flatten_weight, finite_differences, positive_roots, kronecker_weight_vpn
+from .. import BarvinokEvaluator, LatteEvaluator, flatten_weight, finite_differences, positive_roots, kronecker_weight_vpn
 from . import WeightParamType, enable_logging
 
 
