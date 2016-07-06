@@ -26,7 +26,7 @@ from . import WeightParamType, enable_logging
     help='Compute weight multiplicity instead of Kronecker coefficient.')
 @click.option('-v', '--verbose', is_flag=True)
 def main(partitions, weight_multiplicity, barvinok, latte, verbose):
-    """
+    u"""
     Compute (generalized) Kronecker coefficient g(\u03BB,\u03BC,\u03BD,...).
     """
     # enable verbose mode?

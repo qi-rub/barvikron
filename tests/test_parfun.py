@@ -1,5 +1,6 @@
-from __future__ import division
+from __future__ import absolute_import, division
 from barvikron import *
+from six.moves import range
 import itertools
 import pytest
 

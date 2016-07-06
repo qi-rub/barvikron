@@ -1,5 +1,6 @@
 from __future__ import absolute_import
 import os, re, subprocess, tempfile
+from six.moves import map, range
 from . import LONG_INTEGER, EvaluatorBase
 
 __all__ = ['LatteEvaluator']
@@ -12,15 +13,16 @@ def prepare_input(A, b):
     nrows, ncols = A.shape
     s = '%s %s\n' % (nrows, ncols + 1)
 
+    def integers(n):
+        return ' '.join(str(i) for i in range(1, n + 1))
+
     # A[i] * x - b[i] = 0
     for i, row in enumerate(A):
         s += '%s   %s\n' % (-b[i], ' '.join(map(str, row)))
-    s += 'linearity     %s   %s\n' % (nrows,
-                                      ' '.join(map(str, range(1, 1 + nrows))))
+    s += 'linearity     %s   %s\n' % (nrows, integers(nrows))
 
     # x[i] >= 0
-    s += 'nonnegative   %s   %s\n' % (ncols,
-                                      ' '.join(map(str, range(1, 1 + ncols))))
+    s += 'nonnegative   %s   %s\n' % (ncols, integers(ncols))
     return s
 
 

@@ -1,9 +1,7 @@
 from __future__ import absolute_import, print_function
 import logging, multiprocessing, multiprocessing.managers, os, sys
-if sys.version_info > (3, ):
-    from queue import Empty
-else:
-    from Queue import Empty
+from six.moves.queue import Empty
+from six.moves import map
 import click
 from .. import BarvinokEvaluator, LatteEvaluator, kronecker_weight_multiplicity, kronecker, LONG_INTEGER, flatten_weight, finite_differences, positive_roots, kronecker_weight_vpn
 from . import WeightParamType, enable_logging
@@ -33,7 +31,7 @@ DEFAULT_PORT = 12345
               help='Secret authentication key for communication with workers.')
 @click.option('-v', '--verbose', is_flag=True)
 def master(partitions, port, authkey, verbose):
-    """
+    u"""
     Compute (generalized) Kronecker coefficient g(\u03BB,\u03BC,\u03BD,...)
     using parallel processing. See README for instructions.
     """
@@ -98,7 +96,7 @@ def master(partitions, port, authkey, verbose):
 )
 @click.option('-v', '--verbose', is_flag=True)
 def worker(partitions, host, port, authkey, barvinok, latte, verbose):
-    """
+    u"""
     Compute (generalized) Kronecker coefficient g(\u03BB,\u03BC,\u03BD,...)
     using parallel processing. See README for instructions.
     """

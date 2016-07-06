@@ -1,5 +1,6 @@
 from __future__ import absolute_import
 import os, subprocess
+from six.moves import map, range
 from . import LONG_INTEGER, EvaluatorBase
 
 __all__ = ['BarvinokEvaluator']
