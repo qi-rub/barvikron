@@ -59,3 +59,6 @@ class LatteEvaluator(EvaluatorBase):
             return int(match.group(1))
         finally:
             os.remove(input_path)
+
+    def __str__(self):
+        return 'latte[%s]' % self.path

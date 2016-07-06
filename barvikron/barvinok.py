@@ -48,3 +48,6 @@ class BarvinokEvaluator(EvaluatorBase):
 
         # parse output
         return int(stdout.splitlines()[-1])
+
+    def __str__(self):
+        return 'barvinok[%s]' % self.path
