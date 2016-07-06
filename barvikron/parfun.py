@@ -1,7 +1,10 @@
 from __future__ import absolute_import
+import os
 import numpy as np
+import whichcraft
 
-__all__ = ['VectorPartitionFunction', 'EvaluatorBase']
+__all__ = ['VectorPartitionFunction', 'EvaluatorBase', 'default_evaluator',
+           'NoEvaluatorFound']
 
 
 class VectorPartitionFunction(object):
@@ -31,3 +34,32 @@ class EvaluatorBase(object):
 
     def eval(self, vpn, b):
         raise NotImplementedError
+
+
+class NoEvaluatorFound(Exception):
+    pass
+
+
+def default_evaluator():
+    """
+    Find and instantiate best available evaluator.
+    """
+    from .barvinok import BarvinokEvaluator
+    from .latte import LatteEvaluator
+
+    # first try environment variables
+    if 'BARVIKRON_BARVINOK' in os.environ:
+        return BarvinokEvaluator(os.environ['BARVIKRON_BARVINOK'])
+    if 'BARVIKRON_LATTE' in os.environ:
+        return LatteEvaluator(os.environ['BARVIKRON_LATTE'])
+
+    # then try to find executables
+    path = whichcraft.which('barvinok_count')
+    if path:
+        return BarvinokEvaluator(path)
+
+    path = whichcraft.which('count')
+    if path:
+        return LatteEvaluator(path)
+
+    raise NoEvaluatorFound()

@@ -1,6 +1,6 @@
 from __future__ import absolute_import, print_function
-import click
-from .. import BarvinokEvaluator, LatteEvaluator, kronecker_weight_multiplicity, kronecker
+import click, sys
+from .. import BarvinokEvaluator, LatteEvaluator, kronecker_weight_multiplicity, kronecker, default_evaluator, NoEvaluatorFound
 from . import WeightParamType, enable_logging
 
 
@@ -33,10 +33,23 @@ def main(partitions, weight_multiplicity, barvinok, latte, verbose):
         enable_logging()
 
     # instantiate evaluator
-    assert bool(barvinok) != bool(
-        latte), 'Specify either --barvinok or --latte.'
-    evaluator = BarvinokEvaluator(barvinok) if barvinok else LatteEvaluator(
-        latte)
+    if barvinok and latte:
+        click.echo('Specify either --barvinok or --latte (but not both).',
+                   err=True)
+        sys.exit(1)
+
+    if barvinok:
+        evaluator = BarvinokEvaluator(barvinok)
+    elif latte:
+        evaluator = LatteEvaluator(latte)
+    else:
+        try:
+            evaluator = default_evaluator()
+        except NoEvaluatorFound:
+            click.echo(
+                'No partition function evaluator found. Specify --barvinok or --latte option.',
+                err=True)
+            sys.exit(1)
 
     # compute Kronecker coefficient
     if weight_multiplicity:
