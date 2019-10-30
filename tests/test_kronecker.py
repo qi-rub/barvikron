@@ -16,7 +16,7 @@ def test_kronecker_weight_vpn():
         [1, 1, 0, 0, 1, 1, 0, 0],
         [0, 0, 1, 1, 0, 0, 1, 1],
         [1, 0, 1, 0, 1, 0, 1, 0],
-        [0, 1, 0, 1, 0, 1, 0, 1]
+        [0, 1, 0, 1, 0, 1, 0, 1],
     ]
 
     assert kronecker_weight_vpn([2, 3]).A.tolist() == [
@@ -25,7 +25,7 @@ def test_kronecker_weight_vpn():
         [0, 0, 0, 1, 1, 1],
         [1, 0, 0, 1, 0, 0],
         [0, 1, 0, 0, 1, 0],
-        [0, 0, 1, 0, 0, 1]
+        [0, 0, 1, 0, 0, 1],
     ]
 
 
@@ -43,23 +43,26 @@ def test_positive_roots():
     ]
 
 
-@pytest.mark.parametrize("partitions,expected", [
-    ([[1, 0], [1, 0], [1, 0]], 1),
-    ([[1, 0], [0, 1], [1, 0]], 1),
-    ([[1, 0], [0, 1], [2, -1]], 0),
-])
+@pytest.mark.parametrize(
+    "partitions,expected",
+    [
+        ([[1, 0], [1, 0], [1, 0]], 1),
+        ([[1, 0], [0, 1], [1, 0]], 1),
+        ([[1, 0], [0, 1], [2, -1]], 0),
+    ],
+)
 def test_kronecker_weight_multiplicity(partitions, expected, evaluator):
     assert kronecker_weight_multiplicity(partitions, evaluator) == expected
 
 
-@pytest.mark.parametrize("N", [1, 2, 3, 4, 5, 10**20, 10**20 + 5])
+@pytest.mark.parametrize("N", [1, 2, 3, 4, 5, 10 ** 20, 10 ** 20 + 5])
 def test_two_row_boxes(N, evaluator):
     partitions = stretch(N, [[1, 1], [1, 1], [1, 1]])
     assert kronecker(partitions, evaluator) == (N + 1) % 2
 
 
 @pytest.mark.parametrize("j", [1, 2])
-@pytest.mark.parametrize("N", [1, 2, 3, 4, 100, 10**20])
+@pytest.mark.parametrize("N", [1, 2, 3, 4, 100, 10 ** 20])
 def test_briand_orellana_rosas_2_4(j, N, evaluator):
     """
     Compare with formula by Briand-Orellana-Rosas (Theorem 2.4 of arXiv:0810.3163).
@@ -78,7 +81,7 @@ def test_briand_orellana_rosas_2_4(j, N, evaluator):
     assert got == expected
 
 
-@pytest.mark.parametrize("N", [1, 2, 3, 4, 5, 100, 10**20])
+@pytest.mark.parametrize("N", [1, 2, 3, 4, 5, 100, 10 ** 20])
 def test_briand_orellana_rosas_p8(N, evaluator):
     """
     Compare with formula by Briand-Orellana-Rosas (page 8 of arXiv:0810.3163).
@@ -89,5 +92,5 @@ def test_briand_orellana_rosas_p8(N, evaluator):
 
     got = kronecker(stretch(N, [alpha, beta, gamma]), evaluator)
     # expected = 7 / 4 * N**2 + 3 / 2 * N + 1 - (N % 2) * 5 / 4
-    expected = (7 * N**2 + 6 * N + 4 - (N % 2) * 5) // 4
+    expected = (7 * N ** 2 + 6 * N + 4 - (N % 2) * 5) // 4
     assert got == expected

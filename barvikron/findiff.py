@@ -2,7 +2,7 @@ from __future__ import absolute_import
 from collections import defaultdict
 import numpy as np
 
-__all__ = ['finite_differences']
+__all__ = ["finite_differences"]
 
 
 def finite_differences(positive_roots):
@@ -22,5 +22,8 @@ def finite_differences(positive_roots):
     for coeff, shift in l:
         d[tuple(shift)] += coeff
 
-    return [(coeff, np.array(shift, dtype=object))
-            for shift, coeff in d.items() if coeff != 0]
+    return [
+        (coeff, np.array(shift, dtype=object))
+        for shift, coeff in d.items()
+        if coeff != 0
+    ]

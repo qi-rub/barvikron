@@ -1,29 +1,40 @@
 from __future__ import absolute_import, print_function
 import click, sys
-from .. import BarvinokEvaluator, LatteEvaluator, kronecker_weight_multiplicity, kronecker, default_evaluator, NoEvaluatorFound
+from .. import (
+    BarvinokEvaluator,
+    LatteEvaluator,
+    kronecker_weight_multiplicity,
+    kronecker,
+    default_evaluator,
+    NoEvaluatorFound,
+)
 from . import WeightParamType, enable_logging
 
 
 @click.command()
-@click.argument('partitions',
-                metavar=u'\u03BB \u03BC \u03BD ...',
-                nargs=-1,
-                required=True,
-                type=WeightParamType())
-@click.option(
-    '--barvinok',
-    metavar='PATH',
-    help='Path to barvinok_count tool (see http://barvinok.gforge.inria.fr/).')
-@click.option(
-    '--latte',
-    metavar='PATH',
-    help='Path to LattE\'s count tool (see https://www.math.ucdavis.edu/~latte/).'
+@click.argument(
+    "partitions",
+    metavar=u"\u03BB \u03BC \u03BD ...",
+    nargs=-1,
+    required=True,
+    type=WeightParamType(),
 )
 @click.option(
-    '--weight-multiplicity',
+    "--barvinok",
+    metavar="PATH",
+    help="Path to barvinok_count tool (see http://barvinok.gforge.inria.fr/).",
+)
+@click.option(
+    "--latte",
+    metavar="PATH",
+    help="Path to LattE's count tool (see https://www.math.ucdavis.edu/~latte/).",
+)
+@click.option(
+    "--weight-multiplicity",
     is_flag=True,
-    help='Compute weight multiplicity instead of Kronecker coefficient.')
-@click.option('-v', '--verbose', is_flag=True)
+    help="Compute weight multiplicity instead of Kronecker coefficient.",
+)
+@click.option("-v", "--verbose", is_flag=True)
 def main(partitions, weight_multiplicity, barvinok, latte, verbose):
     u"""
     Compute (generalized) Kronecker coefficient g(\u03BB,\u03BC,\u03BD,...).
@@ -34,8 +45,7 @@ def main(partitions, weight_multiplicity, barvinok, latte, verbose):
 
     # instantiate evaluator
     if barvinok and latte:
-        click.echo('Specify either --barvinok or --latte (but not both).',
-                   err=True)
+        click.echo("Specify either --barvinok or --latte (but not both).", err=True)
         sys.exit(1)
 
     if barvinok:
@@ -47,8 +57,9 @@ def main(partitions, weight_multiplicity, barvinok, latte, verbose):
             evaluator = default_evaluator()
         except NoEvaluatorFound:
             click.echo(
-                'No partition function evaluator found. Specify --barvinok or --latte option.',
-                err=True)
+                "No partition function evaluator found. Specify --barvinok or --latte option.",
+                err=True,
+            )
             sys.exit(1)
 
     # compute Kronecker coefficient

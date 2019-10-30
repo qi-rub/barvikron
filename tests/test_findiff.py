@@ -8,12 +8,7 @@ def sorted_list(coeffs):
 
 def test_1dimensional():
     findiff = finite_differences([[1], [1], [1]])
-    assert sorted_list(findiff) == [
-        (-3, [1]),
-        (-1, [3]),
-        (+1, [0]),
-        (+3, [2]),
-    ]
+    assert sorted_list(findiff) == [(-3, [1]), (-1, [3]), (+1, [0]), (+3, [2])]
 
 
 def test_kronecker_findiff():

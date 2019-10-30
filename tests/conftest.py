@@ -9,13 +9,15 @@ def pytest_addoption(parser):
         metavar="PATH",
         action="store",
         default=None,
-        help="evaluate partition functions using barvinok (http://barvinok.gforge.inria.fr/)")
+        help="evaluate partition functions using barvinok (http://barvinok.gforge.inria.fr/)",
+    )
     parser.addoption(
         "--latte",
         metavar="PATH",
         action="store",
         default=None,
-        help="evaluate partition functions using LaTTe (https://www.math.ucdavis.edu/~latte/)")
+        help="evaluate partition functions using LaTTe (https://www.math.ucdavis.edu/~latte/)",
+    )
 
 
 def pytest_configure(config):
@@ -37,9 +39,9 @@ def pytest_configure(config):
 
 
 def pytest_report_header(config):
-    return "evaluators: %s" % ', '.join(str(e) for e in pytest.evaluators)
+    return "evaluators: %s" % ", ".join(str(e) for e in pytest.evaluators)
 
 
 def pytest_generate_tests(metafunc):
-    if 'evaluator' in metafunc.fixturenames:
-        metafunc.parametrize('evaluator', pytest.evaluators)
+    if "evaluator" in metafunc.fixturenames:
+        metafunc.parametrize("evaluator", pytest.evaluators)

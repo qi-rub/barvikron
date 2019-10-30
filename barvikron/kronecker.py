@@ -3,8 +3,13 @@ import itertools, logging
 import numpy as np
 from . import VectorPartitionFunction, finite_differences
 
-__all__ = ['kronecker_weight_vpn', 'flatten_weight',
-           'kronecker_weight_multiplicity', 'positive_roots', 'kronecker']
+__all__ = [
+    "kronecker_weight_vpn",
+    "flatten_weight",
+    "kronecker_weight_multiplicity",
+    "positive_roots",
+    "kronecker",
+]
 
 
 def kronecker_weight_vpn(dims):
@@ -33,8 +38,9 @@ def flatten_weight(omega):
     Flatten a product weight omega, given as list of weights of each GL(d), into a single vector.
     """
     num_boxes = set(map(sum, omega))
-    assert len(num_boxes) == 1, \
-            'All components should have the same number of degree (number of boxes).'
+    assert (
+        len(num_boxes) == 1
+    ), "All components should have the same number of degree (number of boxes)."
 
     return np.hstack(omega)
 
@@ -74,26 +80,37 @@ def kronecker(partitions, evaluator):
     # compute highest weight and finite-difference formula
     highest_weight = flatten_weight(partitions)
     proots = positive_roots(dims)
-    assert all(highest_weight.dot(pr) >= 0
-               for pr in proots), 'Highest weight should be dominant.'
+    assert all(
+        highest_weight.dot(pr) >= 0 for pr in proots
+    ), "Highest weight should be dominant."
     findiff = finite_differences(proots)
 
     # compute finite-difference formula coefficients
     total = len(findiff)
     logging.info(
-        'About to compute %d weight multiplicities using a partition function of size %s.',
-        total, vpn.A.shape)
+        "About to compute %d weight multiplicities using a partition function of size %s.",
+        total,
+        vpn.A.shape,
+    )
 
     g = 0
     for i, (coeff, shift) in enumerate(findiff):
         # compute next weight multiplicity
         weight = highest_weight + shift
         logging.info(
-            '(%3d/%3d)   About to compute the weight multiplicity of %s...',
-            i + 1, total, weight)
+            "(%3d/%3d)   About to compute the weight multiplicity of %s...",
+            i + 1,
+            total,
+            weight,
+        )
         weight_mul = vpn.eval(weight, evaluator)
-        logging.info('(%3d/%3d)   => weight multiplicity = %d (coeff = %d).',
-                     i + 1, total, weight_mul, coeff)
+        logging.info(
+            "(%3d/%3d)   => weight multiplicity = %d (coeff = %d).",
+            i + 1,
+            total,
+            weight_mul,
+            coeff,
+        )
 
         # and add appropriately
         g += coeff * weight_mul
