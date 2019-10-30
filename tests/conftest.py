@@ -3,10 +3,6 @@ from barvikron import BarvinokEvaluator, LatteEvaluator, default_evaluator
 import pytest
 
 
-def pytest_namespace():
-    return {'evaluators': []}
-
-
 def pytest_addoption(parser):
     parser.addoption(
         "--barvinok",
@@ -23,6 +19,8 @@ def pytest_addoption(parser):
 
 
 def pytest_configure(config):
+    pytest.evaluators = []
+
     # add barvinok?
     barvinok_path = config.getoption("--barvinok")
     if barvinok_path:
