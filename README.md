@@ -29,7 +29,9 @@ Then install either [barvinok](https://barvinok.sourceforge.io) or [LattE](https
 
 To compute a single Kronecker coefficient, call `barvikron` with the partitions and specify either the barvinok or LattE backend:
 ```bash
-$ barvikron [4096,4096] [4096,4096] [4096,4096] --barvinok /opt/barvinok/bin/barvinok_count 
+$ barvikron [4096,4096] [4096,4096] [4096,4096] --barvinok /opt/barvinok/bin/barvinok_count
+1
+$ barvikron [4096,4096] [4096,4096] [4096,4096] --latte /opt/latte/bin/count
 1
 ```
 
