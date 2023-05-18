@@ -126,6 +126,6 @@ Barvikron is much faster than codes such as LiE or Sage's symmetric function lib
 
 We note that evaluating each such Kronecker coefficient amounts to evaluating 216 weight multiplicities for GL(3) x GL(3) x GL(3). Computing a single weight multiplicity takes 3m25.701s and 4m7.178s for N = 10000 and 100000, respectively.
 
-Interestingly, the weight multiplicity of `[400000,200000,100000], [500000,100000,100000], [300000,200000,200000]` in `Sym^700000(C^27)` is equal to `342216835855298841170737708279176303674277186351573308277640173317403784744358278942583775`... :smile:
+Interestingly, the weight multiplicity of `[400000,200000,100000], [500000,100000,100000], [300000,200000,200000]` in `Sym^700000(C^27)` is equal to `342216835855298841170737708279176303674277186351573308277640173317403784744358278942583775`...
 
-— Michael Walter, 2012–2016
+— Michael Walter, 2012–2023
