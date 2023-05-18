@@ -21,6 +21,10 @@ If you find barvikron useful in your research please consider citing our paper:
 
 To install `barvikron`, simply run:
 ```bash
+pip install barvikron
+```
+If you are interested in the latest development version, instead run:
+```bash
 pip install git+git://github.com/qi-rub/barvikron.git
 ```
 Then install either [barvinok](https://barvinok.sourceforge.io) or [LattE](https://www.math.ucdavis.edu/~latte/).
