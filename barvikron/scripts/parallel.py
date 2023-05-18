@@ -1,4 +1,4 @@
-import logging, multiprocessing, multiprocessing.managers, os
+import logging, multiprocessing, multiprocessing.managers, os, queue
 import click
 from .. import (
     BarvinokEvaluator,
@@ -168,7 +168,7 @@ def worker(partitions, host, port, authkey, barvinok, latte, verbose):
             # post result
             result_queue.put(coeff * weight_mul)
             work_queue.task_done()
-        except Empty:
+        except queue.Empty:
             break
 
 
