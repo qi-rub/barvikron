@@ -1,4 +1,4 @@
-# barvikron [![Build Status](https://travis-ci.org/catch22/barvikron.svg?branch=master)](https://travis-ci.org/catch22/barvikron) [![arXiv](http://img.shields.io/badge/arXiv-1204.4379-blue.svg?style=flat)](http://arxiv.org/abs/1204.4379)
+# barvikron [![Build Status](https://travis-ci.org/qi-rub/barvikron.svg?branch=master)](https://travis-ci.org/qi-rub/barvikron) [![arXiv](http://img.shields.io/badge/arXiv-1204.4379-blue.svg?style=flat)](http://arxiv.org/abs/1204.4379)
 
 **Efficiently compute Kronecker coefficients of bounded height**
 
@@ -13,7 +13,7 @@ If you find barvikron useful in your research please consider citing our paper:
   Doi       = {10.1109/FOCS.2012.43},
   Pages     = {639--648},
   Year      = {2012},
-  Note      = {Software available at \url{https://github.com/catch22/barvikron/}.},
+  Note      = {Software available at \url{https://github.com/qi-rub/barvikron/}.},
 }
 ```
 
@@ -21,9 +21,9 @@ If you find barvikron useful in your research please consider citing our paper:
 
 To install `barvikron`, simply run:
 ```bash
-pip install git+git://github.com/catch22/barvikron.git
+pip install git+git://github.com/qi-rub/barvikron.git
 ```
-Then install either [barvinok](http://barvinok.gforge.inria.fr/) or [LattE](https://www.math.ucdavis.edu/~latte/).
+Then install either [barvinok](https://barvinok.sourceforge.io) or [LattE](https://www.math.ucdavis.edu/~latte/).
 
 # Getting started
 
