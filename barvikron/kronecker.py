@@ -1,4 +1,3 @@
-from __future__ import absolute_import
 import itertools, logging
 import numpy as np
 from . import VectorPartitionFunction, finite_differences

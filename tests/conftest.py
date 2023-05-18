@@ -1,6 +1,5 @@
-from __future__ import absolute_import
-from barvikron import BarvinokEvaluator, LatteEvaluator, default_evaluator
 import pytest
+from barvikron import BarvinokEvaluator, LatteEvaluator, default_evaluator
 
 
 def pytest_addoption(parser):

@@ -31,6 +31,7 @@ To compute a single Kronecker coefficient, call `barvikron` with the partitions 
 ```bash
 $ barvikron [4096,4096] [4096,4096] [4096,4096] --barvinok /opt/barvinok/bin/barvinok_count
 1
+
 $ barvikron [4096,4096] [4096,4096] [4096,4096] --latte /opt/latte/bin/count
 1
 ```

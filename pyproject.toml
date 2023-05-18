@@ -1,0 +1,49 @@
+[build-system]
+requires = ["setuptools", "setuptools-scm"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "barvikron"
+authors = [
+  { name="Michael Walter", email="michael.walter@rub.de" },
+]
+description = "Efficiently compute Kronecker coefficients of bounded height (using the algorithm of arXiv:1204.4379)."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Environment :: Console",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+]
+dependencies = [
+    "click",
+    "numpy",
+    "whichcraft",
+]
+dynamic = ["version"]
+
+[project.urls]
+"Homepage" = "https://github.com/qi-rub/barvikron"
+"Bug Tracker" = "https://github.com/qi-rub/barvikron/issues"
+
+[project.scripts]
+barvikron = "barvikron.scripts.serial:main"
+barvikron-master = "barvikron.scripts.parallel:master"
+barvikron-worker = "barvikron.scripts.parallel:worker"
+
+[project.optional-dependencies]
+dev = [
+    "black",
+    "pytest",
+    "pytest-clarity",
+    "pytest-sugar",
+]
+
+[tool.setuptools.dynamic]
+version = {attr = "barvikron.__version__"}
+
+[tool.setuptools.packages.find]
+include = ["barvikron"]

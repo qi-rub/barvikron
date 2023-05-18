@@ -1,5 +1,5 @@
-from __future__ import absolute_import, print_function
-import click, sys
+import sys
+import click
 from .. import (
     BarvinokEvaluator,
     LatteEvaluator,

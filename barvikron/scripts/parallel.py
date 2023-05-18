@@ -1,7 +1,4 @@
-from __future__ import absolute_import, print_function
 import logging, multiprocessing, multiprocessing.managers, os
-from six.moves.queue import Empty
-from six.moves import map
 import click
 from .. import (
     BarvinokEvaluator,

@@ -1,6 +1,4 @@
-from __future__ import absolute_import
 import os, re, subprocess, tempfile
-from six.moves import map, range
 from . import EvaluatorBase
 
 __all__ = ["LatteEvaluator"]

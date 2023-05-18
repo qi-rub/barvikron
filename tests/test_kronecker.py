@@ -1,7 +1,5 @@
-from __future__ import absolute_import, division
-from six.moves import map
-from barvikron import *
 import pytest
+from barvikron import *
 
 
 def stretch(N, partitions):

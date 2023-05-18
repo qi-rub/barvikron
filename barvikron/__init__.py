@@ -1,6 +1,4 @@
-from __future__ import absolute_import
-
-__version__ = "0.4"
+__version__ = "0.5"
 
 from .parfun import *
 from .barvinok import *
