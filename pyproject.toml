@@ -9,7 +9,7 @@ authors = [
 ]
 description = "Efficiently compute Kronecker coefficients of bounded height (using the algorithm of arXiv:1204.4379)."
 readme = "README.md"
-requires-python = ">=3.10"
+requires-python = ">=3.9"
 license = { text = "MIT" }
 classifiers = [
     "Development Status :: 4 - Beta",
