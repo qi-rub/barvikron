@@ -14,7 +14,7 @@ from . import WeightParamType, enable_logging
 @click.command()
 @click.argument(
     "partitions",
-    metavar=u"\u03BB \u03BC \u03BD ...",
+    metavar="\u03BB \u03BC \u03BD ...",
     nargs=-1,
     required=True,
     type=WeightParamType(),
@@ -36,7 +36,7 @@ from . import WeightParamType, enable_logging
 )
 @click.option("-v", "--verbose", is_flag=True)
 def main(partitions, weight_multiplicity, barvinok, latte, verbose):
-    u"""
+    """
     Compute (generalized) Kronecker coefficient g(\u03BB,\u03BC,\u03BD,...).
     """
     # enable verbose mode?

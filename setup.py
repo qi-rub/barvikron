@@ -29,17 +29,13 @@ setup(
     author_email="michael.walter@gmail.com",
     url="https://github.com/catch22/barvikron",
     classifiers=[
-        "Programming Language :: Python :: 2",
-        "Programming Language :: Python :: 2.7",
         "Programming Language :: Python :: 3",
-        "Programming Language :: Python :: 3.4",
-        "Programming Language :: Python :: 3.5",
         "Development Status :: 4 - Beta",
         "Environment :: Console",
     ],
     install_requires=["Click", "numpy", "six", "whichcraft"],
     packages=["barvikron"],
-    tests_require=["pytest"],
+    tests_require=["pytest", "pytest-clarity"],
     entry_points="""
     [console_scripts]
     barvikron=barvikron.scripts.serial:main

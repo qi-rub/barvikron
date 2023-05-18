@@ -24,7 +24,7 @@ DEFAULT_PORT = 12345
 @click.command()
 @click.argument(
     "partitions",
-    metavar=u"\u03BB \u03BC \u03BD ...",
+    metavar="\u03BB \u03BC \u03BD ...",
     nargs=-1,
     required=True,
     type=WeightParamType(),
@@ -44,7 +44,7 @@ DEFAULT_PORT = 12345
 )
 @click.option("-v", "--verbose", is_flag=True)
 def master(partitions, port, authkey, verbose):
-    u"""
+    """
     Compute (generalized) Kronecker coefficient g(\u03BB,\u03BC,\u03BD,...)
     using parallel processing. See README for instructions.
     """
@@ -85,7 +85,7 @@ def master(partitions, port, authkey, verbose):
 @click.command()
 @click.argument(
     "partitions",
-    metavar=u"\u03BB \u03BC \u03BD ...",
+    metavar="\u03BB \u03BC \u03BD ...",
     nargs=-1,
     required=True,
     type=WeightParamType(),
@@ -116,7 +116,7 @@ def master(partitions, port, authkey, verbose):
 )
 @click.option("-v", "--verbose", is_flag=True)
 def worker(partitions, host, port, authkey, barvinok, latte, verbose):
-    u"""
+    """
     Compute (generalized) Kronecker coefficient g(\u03BB,\u03BC,\u03BD,...)
     using parallel processing. See README for instructions.
     """
