@@ -107,7 +107,7 @@ Here is a sample script for computing Kronecker coefficients using the LSF platf
 #!/bin/bash
 PARTITIONS="[40000,20000,10000] [50000,10000,10000] [30000,20000,20000]"
 barvikron-parallel master $PARTITIONS -K SECRET -v &
-blaunch -z "$LSB_HOSTS" barvikron-parallel worker -H "$HOSTNAME" -K SECRET worker $PARTITIONS --barvinok $PATH_TO_BARVINOK -v
+blaunch -z "$LSB_HOSTS" barvikron-parallel worker -H "$HOSTNAME" -K SECRET $PARTITIONS --barvinok $PATH_TO_BARVINOK -v
 ```
 
 # Performance
