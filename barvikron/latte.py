@@ -45,16 +45,19 @@ class LatteEvaluator(EvaluatorBase):
             os.close(handle)
 
             # run count
-            stdout = subprocess.check_output(
-                [self.path, input_path],
-                stderr=subprocess.STDOUT,
-                cwd=os.path.dirname(input_path),
-            )
+            try:
+                stdout = subprocess.check_output(
+                    [self.path, input_path],
+                    stderr=subprocess.STDOUT,
+                    cwd=os.path.dirname(input_path),
+                    encoding="ascii",
+                )
+            except subprocess.CalledProcessError as err:
+                if "Empty polytope or unbounded polytope" in err.output:
+                    return 0
+                raise
 
             # parse output
-            stdout = stdout.decode("ascii")
-            if "Empty polytope or unbounded polytope" in stdout:
-                return 0
             match = re.search(r"number of lattice points(?: is)?(?::)? (\d+)", stdout)
             if not match:
                 raise Exception("Could not parse LattE output: %s" % stdout)
