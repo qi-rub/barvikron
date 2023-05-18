@@ -66,4 +66,4 @@ def default_evaluator():
     if path:
         return LatteEvaluator(path)
 
-    raise NoEvaluatorFound()
+    raise NoEvaluatorFound("Cannot find 'barvinok_count' nor LattE's 'count' in path.")
