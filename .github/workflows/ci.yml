@@ -19,7 +19,7 @@ jobs:
       run: |
         wget --no-check-certificate https://www.math.ucdavis.edu/~latte/software/packages/binary/latte-integrale-1.6-x86_64-unknown-linux-gnu.zip -O /tmp/latte.zip
         mkdir latte && pushd latte && unzip /tmp/latte.zip && popd
-        ls ~/work/barvikron/barvikron/latte/bin/count
+        ls /home/runner/work/barvikron/barvikron/latte/bin/count
         ls latte/bin/count
     - name: Install package
       run: |
@@ -27,7 +27,7 @@ jobs:
         python -m pip install .[dev]
     - name: Compute one coefficient
       run: |
-        barvikron [20,0] [11,9] [11,9] --latte=~/work/barvikron/barvikron/latte/bin/count
+        barvikron [20,0] [11,9] [11,9] --latte=/home/runner/work/barvikron/barvikron/latte/bin/count
     - name: Test with pytest
       run: |
-        pytest --latte=~/work/barvikron/barvikron/latte/bin/count
+        pytest --latte=/home/runner/work/barvikron/barvikron/latte/bin/count
