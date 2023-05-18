@@ -36,9 +36,11 @@ barvikron-parallel = "barvikron.scripts.parallel:main"
 [project.optional-dependencies]
 dev = [
     "black",
+    "build",
     "pytest",
     "pytest-clarity",
     "pytest-sugar",
+    "twine",
 ]
 
 [tool.setuptools.dynamic]
