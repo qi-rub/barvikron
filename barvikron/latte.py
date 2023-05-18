@@ -51,11 +51,13 @@ class LatteEvaluator(EvaluatorBase):
                     encoding="ascii",
                 )
             except subprocess.CalledProcessError as err:
-                if "Empty polytope or unbounded polytope" in err.output:
-                    return 0
-                raise
+                # more recent versions of LattE signal an error...
+                if "Empty polytope or unbounded polytope" not in err.output:
+                    raise
 
             # parse output
+            if "Empty polytope or unbounded polytope" in err.output:
+                return 0
             match = re.search(r"number of lattice points(?: is)?(?::)? (\d+)", stdout)
             if not match:
                 raise Exception("Could not parse LattE output: %s" % stdout)
