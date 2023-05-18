@@ -69,7 +69,7 @@ Options:
 
 There are two parts. First, there is the "master" process, which is run once:
 ```
-Usage: barvikron-master [OPTIONS] λ μ ν ...
+Usage: barvikron-parallel master [OPTIONS] λ μ ν ...
 
   Compute (generalized) Kronecker coefficient g(λ,μ,ν,...) using parallel
   processing. See README for instructions.
@@ -83,7 +83,7 @@ Options:
 ```
 It hands off the weight multiplicity computations to worker processes that should be run on the computational nodes (optimally, one process per core of each node).
 ```
-Usage: barvikron-worker [OPTIONS] λ μ ν ...
+Usage: barvikron-parallel worker [OPTIONS] λ μ ν ...
 
   Compute (generalized) Kronecker coefficient g(λ,μ,ν,...) using parallel
   processing. See README for instructions.
@@ -106,13 +106,13 @@ Here is a sample script for computing Kronecker coefficients using the LSF platf
 ```
 #!/bin/bash
 PARTITIONS="[40000,20000,10000] [50000,10000,10000] [30000,20000,20000]"
-barvikron-master $PARTITIONS -K SECRET -v &
-blaunch -z "$LSB_HOSTS" barvikron-worker -H "$HOSTNAME" -K SECRET $PARTITIONS --barvinok $PATH_TO_BARVINOK -v
+barvikron-parallel master $PARTITIONS -K SECRET -v &
+blaunch -z "$LSB_HOSTS" barvikron-parallel worker -H "$HOSTNAME" -K SECRET worker $PARTITIONS --barvinok $PATH_TO_BARVINOK -v
 ```
 
 # Performance
 
-Barvikron is much faster than codes such as LiE or Sage's symmetric function library for computing Kronecker coefficients with long rows. Here are some preliminary benchmarking results for computing the family of three-row Kronecker coefficients `g_{N * [4,2,1], N * [5,1,1], N * [3,2,2]}` using a varying number of processors (of type Opteron6174).
+Barvikron is much faster than codes such as [LiE](http://wwwmathlabo.univ-poitiers.fr/~maavl/LiE/) or [SageMath](https://sagemath.org/)'s symmetric function library for computing Kronecker coefficients with long rows. Here are some preliminary benchmarking results for computing three-row Kronecker coefficients `g_{N * [4,2,1], N * [5,1,1], N * [3,2,2]}` using a varying number of processors (of type Opteron6174).
 
 | N | Processors | Runtime |
 | ------- | --- | ---------- |

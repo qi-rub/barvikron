@@ -31,8 +31,7 @@ dynamic = ["version"]
 
 [project.scripts]
 barvikron = "barvikron.scripts.serial:main"
-barvikron-master = "barvikron.scripts.parallel:master"
-barvikron-worker = "barvikron.scripts.parallel:worker"
+barvikron-parallel = "barvikron.scripts.parallel:main"
 
 [project.optional-dependencies]
 dev = [

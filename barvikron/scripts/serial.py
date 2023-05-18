@@ -68,3 +68,7 @@ def main(partitions, weight_multiplicity, barvinok, latte, verbose):
     else:
         g = kronecker(partitions, evaluator)
     click.echo(g)
+
+
+if __name__ == "__main__":
+    main()

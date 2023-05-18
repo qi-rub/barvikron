@@ -18,7 +18,12 @@ class WorkManager(multiprocessing.managers.BaseManager):
 DEFAULT_PORT = 12345
 
 
-@click.command()
+@click.group()
+def main():
+    pass
+
+
+@main.command()
 @click.argument(
     "partitions",
     metavar="\u03BB \u03BC \u03BD ...",
@@ -79,7 +84,7 @@ def master(partitions, port, authkey, verbose):
     click.echo(g)
 
 
-@click.command()
+@main.command()
 @click.argument(
     "partitions",
     metavar="\u03BB \u03BC \u03BD ...",
@@ -165,3 +170,7 @@ def worker(partitions, host, port, authkey, barvinok, latte, verbose):
             work_queue.task_done()
         except Empty:
             break
+
+
+if __name__ == "__main__":
+    main()
